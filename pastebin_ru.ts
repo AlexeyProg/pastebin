@@ -20,13 +20,13 @@
     </message>
     <message>
         <location filename="src/mainwindow.ui" line="56"/>
-        <source>add</source>
-        <translation type="unfinished"></translation>
+        <source>Add</source>
+        <translation>Добавить</translation>
     </message>
     <message>
         <location filename="src/mainwindow.ui" line="63"/>
-        <source>delete</source>
-        <translation type="unfinished"></translation>
+        <source>Delete</source>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="src/mainwindow.ui" line="119"/>

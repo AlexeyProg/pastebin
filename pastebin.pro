@@ -25,9 +25,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    png/eng.png \
-    png/rus.png
 
 TRANSLATIONS += pastebin_ru.ts \
                 pastebin_eng.ts

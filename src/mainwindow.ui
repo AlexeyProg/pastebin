@@ -53,14 +53,14 @@
      <item>
       <widget class="QPushButton" name="pushButton_add">
        <property name="text">
-        <string>add</string>
+        <string>Add</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_delete">
        <property name="text">
-        <string>delete</string>
+        <string>Delete</string>
        </property>
       </widget>
      </item>
@@ -107,9 +107,9 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>0</y>
+      <y>10</y>
       <width>102</width>
-      <height>80</height>
+      <height>61</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_langs">
@@ -122,7 +122,7 @@
         </size>
        </property>
        <property name="text">
-        <string>ru</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -135,7 +135,7 @@
         </size>
        </property>
        <property name="text">
-        <string>eng</string>
+        <string/>
        </property>
       </widget>
      </item>
