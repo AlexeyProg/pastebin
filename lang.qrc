@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pastebin_ru.qm</file>
+        <file>pastebin_eng.qm</file>
+    </qresource>
+</RCC>

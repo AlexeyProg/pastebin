@@ -4,6 +4,7 @@
 
 #include <QMainWindow>
 #include <QVector>
+#include <QTranslator>
 
 #include "note.h"
 
@@ -22,12 +23,17 @@ public:
     ~MainWindow();
 
 private:
+    QTranslator translator;
+
     void transformMainW();
     Ui::MainWindow *ui;
     QVector<Note*> note_list;
+    void changeLanguage(QString lang);
 
 public slots:
     void addNewNote();
+    void switchToEng();
+    void switchToRus();
 
 private slots:
     void on_pushButton_delete_clicked();

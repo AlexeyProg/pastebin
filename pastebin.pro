@@ -28,3 +28,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     png/eng.png \
     png/rus.png
+
+TRANSLATIONS += pastebin_ru.ts \
+                pastebin_eng.ts
+
+RESOURCES += \
+    lang.qrc

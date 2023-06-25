@@ -32,7 +32,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_">
+      <widget class="QPushButton" name="pushButton_reference">
        <property name="text">
         <string>Reference</string>
        </property>
@@ -43,7 +43,7 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>180</x>
       <y>10</y>
       <width>441</width>
       <height>61</height>
@@ -102,6 +102,44 @@
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>0</y>
+      <width>102</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_langs">
+     <item>
+      <widget class="QPushButton" name="pushButton_ru">
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>ru</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_eng">
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>eng</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

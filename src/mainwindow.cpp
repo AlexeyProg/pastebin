@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QPixmap>
 
 static int current_row = 0;
 static int current_column = 0;
@@ -8,10 +9,18 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
     transformMainW();
 
+    QPixmap pix(":/png/rus.png");
+
+    ui->pushButton_ru->setIcon(QIcon(pix));
+
+
     connect(ui->pushButton_add, SIGNAL(clicked(bool)), this, SLOT(addNewNote()));
+    connect(ui->pushButton_ru, SIGNAL(clicked()), this, SLOT(switchToRus()));
+    connect(ui->pushButton_eng, SIGNAL(clicked()), this, SLOT(switchToEng()));
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +35,13 @@ void MainWindow::transformMainW()
 
 }
 
+void MainWindow::changeLanguage(QString lang)
+{
+    translator.load(lang);
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+}
+
 void MainWindow::addNewNote()
 {
     Note *new_note = new Note("Empty",this);
@@ -37,6 +53,16 @@ void MainWindow::addNewNote()
         current_row++;
     }
     note_list.append(new_note);
+}
+
+void MainWindow::switchToEng()
+{
+    changeLanguage(":/pastebin_eng.qm");
+}
+
+void MainWindow::switchToRus()
+{
+    changeLanguage(":/pastebin_ru.qm");
 }
 
 
