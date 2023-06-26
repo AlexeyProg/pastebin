@@ -6,7 +6,7 @@
     <message>
         <location filename="src/mainwindow.ui" line="14"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>PasteBin v1.0</translation>
     </message>
     <message>
         <location filename="src/mainwindow.ui" line="30"/>

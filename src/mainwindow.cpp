@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QPixmap>
 #include <QIcon>
+#include <QPainter>
+
 
 static int current_row = 0;
 static int current_column = 0;
@@ -12,8 +14,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
+
+    list_buttons.append(ui->pushButton_add);
+    list_buttons.append(ui->pushButton_delete);
+    list_buttons.append(ui->pushButton_notions);
+    list_buttons.append(ui->pushButton_reference);
+
+
     transformMainW();
 
+
+    //list_buttons = this->findChildren<QPushButton*>();
 
     connect(ui->pushButton_add, SIGNAL(clicked(bool)), this, SLOT(addNewNote()));
     connect(ui->pushButton_ru, SIGNAL(clicked()), this, SLOT(switchToRus()));
@@ -25,10 +36,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event);
+    QPainter painter(this);
+    QPixmap pix_wallpaper(":/png/wallpaper.jpg");
+    painter.drawPixmap(rect(),pix_wallpaper);
+}
+
 void MainWindow::transformMainW()
 {
     this->setWindowTitle("PasteBin v1.0");
-    this->setStyleSheet("background-color:grey;");
+    this->setStyleSheet("MainWindow { background-image: url(:/png/wallpaper.jpg); "
+                        "background-repeat: no-repeat; "
+                        "background-position: center; }");
+
 
     QPixmap pix_ru(":/png/rus.png");
     QIcon icon_ru(pix_ru);
@@ -36,12 +58,27 @@ void MainWindow::transformMainW()
     ui->pushButton_ru->setIconSize(QSize(35,35));
     ui->pushButton_ru->setFlat(true);
 
+
     QPixmap pix_eng(":/png/eng.png");
     QIcon icon_eng(pix_eng);
     ui->pushButton_eng->setIcon(icon_eng);
     ui->pushButton_eng->setIconSize(QSize(35,35));
     ui->pushButton_eng->setFlat(true);
 
+
+    set_style_buttons(list_buttons);
+
+}
+
+void MainWindow::set_style_buttons(QVector<QPushButton *> &list)
+{
+    QString style = "background-color: rgb(255, 116, 109); color: #FFFFFF;"
+                    "border-radius: 5px;"
+                    "padding: 5px;";
+    for(QPushButton *but : list)
+    {
+        but->setStyleSheet(style);
+    }
 }
 
 void MainWindow::changeLanguage(QString lang)

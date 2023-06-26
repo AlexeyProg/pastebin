@@ -4,5 +4,6 @@
         <file>pastebin_eng.qm</file>
         <file>png/eng.png</file>
         <file>png/rus.png</file>
+        <file>png/wallpaper.jpg</file>
     </qresource>
 </RCC>

@@ -23,11 +23,16 @@ public:
     ~MainWindow();
 
 private:
-    QTranslator translator;
+    void paintEvent(QPaintEvent *event) override;
 
+    QTranslator translator;
     void transformMainW();
     Ui::MainWindow *ui;
     QVector<Note*> note_list;
+
+    QVector<QPushButton*> list_buttons;
+    void set_style_buttons(QVector<QPushButton*> &list);
+
     void changeLanguage(QString lang);
 
 public slots:
