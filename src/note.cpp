@@ -17,8 +17,8 @@ Note::Note(QString mText, QWidget *parent) : QWidget(parent), mContent(mText)
 
     QTextEdit *text_edit = new QTextEdit(this);
     text_edit->setGeometry(0, 35, 200, 100);
-    text_edit->setText(mContent);
-    text_edit->setStyleSheet("background-color: yellow;");
+    text_edit->setStyleSheet("background-color: yellow;"
+                             "color : rgb(139,0,0);");
     generate_buttons();
 }
 

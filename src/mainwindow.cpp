@@ -4,7 +4,6 @@
 #include <QIcon>
 #include <QPainter>
 
-
 static int current_row = 0;
 static int current_column = 0;
 
@@ -14,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
+
 
     list_buttons.append(ui->pushButton_add);
     list_buttons.append(ui->pushButton_delete);
@@ -25,7 +25,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //list_buttons = this->findChildren<QPushButton*>();
-
+    connect(ui->pushButton_notions, SIGNAL(clicked()), this, SLOT(openNotions()));
+    connect(ui->pushButton_reference, SIGNAL(clicked()), this, SLOT(openReference()));
     connect(ui->pushButton_add, SIGNAL(clicked(bool)), this, SLOT(addNewNote()));
     connect(ui->pushButton_ru, SIGNAL(clicked()), this, SLOT(switchToRus()));
     connect(ui->pushButton_eng, SIGNAL(clicked()), this, SLOT(switchToEng()));
@@ -67,6 +68,7 @@ void MainWindow::transformMainW()
 
 
     set_style_buttons(list_buttons);
+    set_reference_properties();
 
 }
 
@@ -86,6 +88,27 @@ void MainWindow::changeLanguage(QString lang)
     translator.load(lang);
     qApp->installTranslator(&translator);
     ui->retranslateUi(this);
+}
+
+void MainWindow::swapTopic(bool flag)
+{
+    ui->pushButton_add->setVisible(flag);
+    ui->pushButton_delete->setVisible(flag);
+    for(auto * item : note_list)
+    {
+        item->setVisible(flag);
+    }
+    link->setVisible(!flag);
+}
+
+void MainWindow::set_reference_properties()
+{
+    link = new QLabel(this);
+    link->setFont(QFont("Arial",15,QFont::Bold));
+    link->setGeometry(10,20,300,30);
+    ui->gridLayout_desk->addWidget(link);
+    link->setText(myGithub);
+    link->setVisible(false);
 }
 
 void MainWindow::addNewNote()
@@ -109,6 +132,16 @@ void MainWindow::switchToEng()
 void MainWindow::switchToRus()
 {
     changeLanguage(":/pastebin_ru.qm");
+}
+
+void MainWindow::openReference()
+{
+    swapTopic(false);
+}
+
+void MainWindow::openNotions()
+{
+    swapTopic(true);
 }
 
 

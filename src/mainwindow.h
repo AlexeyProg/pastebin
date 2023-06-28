@@ -5,6 +5,8 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QTranslator>
+#include <QLabel>
+#include <QFont>
 
 #include "note.h"
 
@@ -23,8 +25,11 @@ public:
     ~MainWindow();
 
 private:
-    void paintEvent(QPaintEvent *event) override;
+    QString myGithub = "GitHub link : https://github.com/AlexeyProg";
+    QLabel *link;
 
+
+    void paintEvent(QPaintEvent *event) override;
     QTranslator translator;
     void transformMainW();
     Ui::MainWindow *ui;
@@ -34,11 +39,15 @@ private:
     void set_style_buttons(QVector<QPushButton*> &list);
 
     void changeLanguage(QString lang);
+    void swapTopic(bool flag);
+    void set_reference_properties();
 
 public slots:
     void addNewNote();
     void switchToEng();
     void switchToRus();
+    void openReference();
+    void openNotions();
 
 private slots:
     void on_pushButton_delete_clicked();
