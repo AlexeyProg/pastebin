@@ -3,22 +3,23 @@
 #include <QLineEdit>
 
 
-Note::Note(QString mText, QWidget *parent) : QWidget(parent), mContent(mText)
+Note::Note(QString mText, QString title, QWidget *parent) : QWidget(parent), mTitle(title), mContent(mText)
 {
     Q_UNUSED(parent);
     setFixedSize(250, 150);
 
 
     QLineEdit *titleLabel = new QLineEdit(this);
-    titleLabel->setText("Title");
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("background-color: green;");
     titleLabel->setGeometry(0, 0,200, 30);
+    titleLabel->setText(mTitle);
 
     QTextEdit *text_edit = new QTextEdit(this);
     text_edit->setGeometry(0, 35, 200, 100);
     text_edit->setStyleSheet("background-color: yellow;"
                              "color : rgb(139,0,0);");
+    text_edit->setText(mContent);
     generate_buttons();
 }
 

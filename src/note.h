@@ -10,7 +10,7 @@ class Note : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Note(QString mText,QWidget *parent = nullptr);
+    explicit Note(QString mText, QString title = "Title", QWidget *parent = nullptr);
 
     QString mName;
     QString mTitle;

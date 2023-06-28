@@ -7,6 +7,7 @@
 #include <QTranslator>
 #include <QLabel>
 #include <QFont>
+#include "db/dbimporter.h"
 
 #include "note.h"
 
@@ -27,6 +28,8 @@ public:
 private:
     QString myGithub = "GitHub link : https://github.com/AlexeyProg";
     QLabel *link;
+    DBImporter import;
+
 
 
     void paintEvent(QPaintEvent *event) override;
@@ -41,7 +44,7 @@ private:
     void changeLanguage(QString lang);
     void swapTopic(bool flag);
     void set_reference_properties();
-
+    void import_DB_notes();
 public slots:
     void addNewNote();
     void switchToEng();

@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
 
+//    import->connectToDatabase();
+    import_DB_notes();
 
     list_buttons.append(ui->pushButton_add);
     list_buttons.append(ui->pushButton_delete);
@@ -111,9 +113,29 @@ void MainWindow::set_reference_properties()
     link->setVisible(false);
 }
 
+void MainWindow::import_DB_notes()
+{
+    QList<Note*> test = import.importNotes();
+    if(test.isEmpty())
+        qDebug() << "test is empty";
+    else
+        qDebug() << " test is not empty";
+    for(Note *item : test)
+    {
+        ui->gridLayout_desk->addWidget(item,current_row,current_column);
+        current_column++;
+        if(current_column >= 3)
+        {
+            current_column = 0;
+            current_row++;
+        }
+        note_list.append(item);
+    }
+}
+
 void MainWindow::addNewNote()
 {
-    Note *new_note = new Note("Empty",this);
+    Note *new_note = new Note("Empty","Title",this);
     ui->gridLayout_desk->addWidget(new_note, current_row,current_column);
     current_column++;
     if(current_column >= 3)
