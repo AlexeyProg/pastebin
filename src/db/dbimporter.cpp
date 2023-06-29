@@ -18,17 +18,24 @@ QString DBImporter::connectToDatabase()
         return "Connection error!";
 }
 
-QList<Note *> DBImporter::importNotes()
+QHash<int32_t, Note *> DBImporter::importNotes()
 {
-    QList<Note*> notes_from_db;
+    QHash<int32_t, Note*> notes_from_db;
 
     QString request = QString("SELECT * from Notes;");
     QSqlQuery q(request);
     while(q.next())
     {
+        int32_t id = q.value(0).toInt();
         Note *new_note = new Note(q.value(2).toString(), q.value(1).toString());
-        qDebug() << q.value(1) << q.value(2);
-        notes_from_db.append(new_note);
+        new_note->mId = id;
+        notes_from_db.insert(id,new_note);
     }
     return notes_from_db;
+}
+
+void DBImporter::closeDatabase()
+{
+    db.close();
+    qDebug() << "Database was closed";
 }

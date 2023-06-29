@@ -12,12 +12,14 @@ LIBS += -L/opt/homebrew/Cellar/postgresql@14/14.8/lib/postgresql@14 -lpq
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/db/dbexporter.cpp \
     src/db/dbimporter.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/note.cpp
 
 HEADERS += \
+    src/db/dbexporter.h \
     src/db/dbimporter.h \
     src/mainwindow.h \
     src/note.h

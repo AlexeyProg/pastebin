@@ -3,6 +3,7 @@
 
 #include "../note.h"
 #include <QSqlDatabase>
+#include <QHash>
 
 
 class DBImporter
@@ -11,7 +12,8 @@ class DBImporter
 public:
     DBImporter();
     QString connectToDatabase();
-    QList<Note*> importNotes();
+    QHash<int32_t, Note *> importNotes();
+    void closeDatabase();
 
 private:
     QSqlDatabase db;

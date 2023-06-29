@@ -27,12 +27,12 @@ void Note::generate_buttons()
 {
 
     check_cross = new QPushButton(this);
-    check_cross->setGeometry(170,2,25,25);
+    check_cross->setGeometry(170,2,30,25);
     check_cross->setText("NO");
     check_cross->setVisible(false);       //нужно юзать setvisible
 
     check_mark = new QPushButton(this);
-    check_mark->setGeometry(140,2,25,25);
+    check_mark->setGeometry(140,2,30,25);
     check_mark->setText("YES");
     check_mark->setVisible(false);
 

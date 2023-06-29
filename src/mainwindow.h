@@ -7,6 +7,7 @@
 #include <QTranslator>
 #include <QLabel>
 #include <QFont>
+#include <QMap>
 #include "db/dbimporter.h"
 
 #include "note.h"
@@ -27,10 +28,10 @@ public:
 
 private:
     QString myGithub = "GitHub link : https://github.com/AlexeyProg";
-    QLabel *link;
-    DBImporter import;
+    QLabel *link;       // dlya github link
+    DBImporter import;  // database
 
-
+    int32_t max_db_id;
 
     void paintEvent(QPaintEvent *event) override;
     QTranslator translator;
@@ -39,11 +40,15 @@ private:
     QVector<Note*> note_list;
 
     QVector<QPushButton*> list_buttons;
+
     void set_style_buttons(QVector<QPushButton*> &list);
 
     void changeLanguage(QString lang);
+
     void swapTopic(bool flag);
+
     void set_reference_properties();
+
     void import_DB_notes();
 public slots:
     void addNewNote();

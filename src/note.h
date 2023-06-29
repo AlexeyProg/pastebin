@@ -15,13 +15,13 @@ public:
     QString mName;
     QString mTitle;
     QString mContent;
+    int mId;
     void set_vision(bool ok);
 private:
     QPushButton *check_mark;
 
     QPushButton *check_cross;
     void generate_buttons();
-    int mId;
 
 signals:
 
