@@ -37,5 +37,4 @@ QHash<int32_t, Note *> DBImporter::importNotes()
 void DBImporter::closeDatabase()
 {
     db.close();
-    qDebug() << "Database was closed";
 }

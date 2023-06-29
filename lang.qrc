@@ -5,5 +5,6 @@
         <file>png/eng.png</file>
         <file>png/rus.png</file>
         <file>png/wallpaper.jpg</file>
+        <file>png/logo.jpg</file>
     </qresource>
 </RCC>

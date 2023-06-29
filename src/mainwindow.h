@@ -50,6 +50,8 @@ private:
     void set_reference_properties();
 
     void import_DB_notes();
+
+    void place_logo();  //logotype placement
 public slots:
     void addNewNote();
     void switchToEng();

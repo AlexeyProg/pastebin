@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     import_DB_notes();
+    place_logo();
 
     list_buttons.append(ui->pushButton_add);
     list_buttons.append(ui->pushButton_delete);
@@ -137,6 +138,15 @@ void MainWindow::import_DB_notes()
 
     //qDebug() << max_db_id << " - max key/id from database";
     import.closeDatabase();
+}
+
+void MainWindow::place_logo()
+{
+    QPixmap pix_logo(":/png/logo.jpg");
+    QLabel *logo_lab = new QLabel(this);
+    QPixmap scaledPixmap = pix_logo.scaled(QSize(160, 160), Qt::KeepAspectRatio);
+    logo_lab->setGeometry(10,400,160,160);
+    logo_lab->setPixmap(scaledPixmap);
 }
 
 void MainWindow::addNewNote()
