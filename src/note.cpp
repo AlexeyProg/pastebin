@@ -24,21 +24,21 @@ Note::Note(QString mText, QString title, QWidget *parent) : QWidget(parent), mTi
 
     connect(text_edit, &QTextEdit::textChanged, this, &Note::changedContent);
     connect(titleLabel, &QLineEdit::textChanged, this, &Note::changedTitle);
+
+
+    // test
+    connect(check_cross, SIGNAL(clicked()), this, SLOT(deleteNote()));
 }
 
 void Note::generate_buttons()
 {
 
     check_cross = new QPushButton(this);
-    check_cross->setGeometry(170,2,30,25);
-    check_cross->setText("NO");
+    check_cross->setGeometry(170,2,25,25);
+    check_cross->setText("X");
     check_cross->setVisible(false);       //нужно юзать setvisible
 
-    check_mark = new QPushButton(this);
-    check_mark->setGeometry(140,2,30,25);
-    check_mark->setText("YES");
-    check_mark->setVisible(false);
-
+    // step1 : delete note from database -> step2 : thiswidget->close();
 }
 
 void Note::changedContent()
@@ -51,17 +51,20 @@ void Note::changedTitle()
     mTitle = titleLabel->text();
 }
 
+void Note::deleteNote()
+{
+    this->close();
+}
+
 void Note::set_vision(bool ok)
 {
     if(ok)
     {
         check_cross->setVisible(true);
-        check_mark->setVisible(true);
     }
     else
     {
         check_cross->setVisible(false);
-        check_mark->setVisible(false);
     }
 }
 

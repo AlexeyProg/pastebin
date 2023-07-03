@@ -13,7 +13,6 @@ class Note : public QWidget
 public:
     explicit Note(QString mText, QString title = "Title", QWidget *parent = nullptr);
 
-    QString mName;
     QString mTitle;
     QString mContent;
     int mId;
@@ -21,14 +20,13 @@ public:
 private:
     QTextEdit *text_edit;
     QLineEdit *titleLabel;
-    QPushButton *check_mark;
-
     QPushButton *check_cross;
     void generate_buttons();
 
 public slots:
     void changedContent();
     void changedTitle();
+    void deleteNote();
 
 
 signals:

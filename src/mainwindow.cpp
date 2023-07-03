@@ -40,12 +40,12 @@ MainWindow::~MainWindow()
 void MainWindow::closeEvent(QCloseEvent *event)
 {
 
-    QList<Note*> t = this->findChildren<Note*>();
-    for(Note *i : t)
-    {
-        qDebug() << i->mTitle << " - " << i->mContent;
-    }
-    exporter.exportNotes(t,max_db_id);
+    QList<Note*> export_list = this->findChildren<Note*>();
+//    for(Note *i : t)
+//    {
+//        qDebug() << i->mTitle << " - " << i->mContent;
+//    }
+    exporter.exportNotes(export_list,max_db_id);
 
     qDebug() << "export success";
     import.closeDatabase();
