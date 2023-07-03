@@ -11,8 +11,7 @@ class DBExporter
 {
 public:
     DBExporter();
-    QString connectToDB();
-    bool exportNotes(QList<Note*> list);
+    bool exportNotes(QList<Note*> &list, int32_t id);
 private:
     QSqlDatabase db;
 };

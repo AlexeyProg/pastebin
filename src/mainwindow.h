@@ -7,8 +7,11 @@
 #include <QTranslator>
 #include <QLabel>
 #include <QFont>
+
+#include <QCloseEvent>
 #include <QMap>
 #include "db/dbimporter.h"
+#include "db/dbexporter.h"
 
 #include "note.h"
 
@@ -26,10 +29,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void closeEvent(QCloseEvent *event) override;
+
 private:
     QString myGithub = "GitHub link : https://github.com/AlexeyProg";
     QLabel *link;       // dlya github link
     DBImporter import;  // database
+    DBExporter exporter;
 
     int32_t max_db_id;
 
@@ -52,6 +58,8 @@ private:
     void import_DB_notes();
 
     void place_logo();  //logotype placement
+
+
 public slots:
     void addNewNote();
     void switchToEng();

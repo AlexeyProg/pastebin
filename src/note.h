@@ -5,6 +5,7 @@
 #include <QTextBrowser>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QLineEdit>
 
 class Note : public QWidget
 {
@@ -18,10 +19,17 @@ public:
     int mId;
     void set_vision(bool ok);
 private:
+    QTextEdit *text_edit;
+    QLineEdit *titleLabel;
     QPushButton *check_mark;
 
     QPushButton *check_cross;
     void generate_buttons();
+
+public slots:
+    void changedContent();
+    void changedTitle();
+
 
 signals:
 

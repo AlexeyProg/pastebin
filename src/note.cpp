@@ -9,18 +9,21 @@ Note::Note(QString mText, QString title, QWidget *parent) : QWidget(parent), mTi
     setFixedSize(250, 150);
 
 
-    QLineEdit *titleLabel = new QLineEdit(this);
+    titleLabel = new QLineEdit(this);
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("background-color: green;");
     titleLabel->setGeometry(0, 0,200, 30);
     titleLabel->setText(mTitle);
 
-    QTextEdit *text_edit = new QTextEdit(this);
+    text_edit = new QTextEdit(this);
     text_edit->setGeometry(0, 35, 200, 100);
     text_edit->setStyleSheet("background-color: yellow;"
                              "color : rgb(139,0,0);");
     text_edit->setText(mContent);
     generate_buttons();
+
+    connect(text_edit, &QTextEdit::textChanged, this, &Note::changedContent);
+    connect(titleLabel, &QLineEdit::textChanged, this, &Note::changedTitle);
 }
 
 void Note::generate_buttons()
@@ -36,6 +39,16 @@ void Note::generate_buttons()
     check_mark->setText("YES");
     check_mark->setVisible(false);
 
+}
+
+void Note::changedContent()
+{
+    mContent = text_edit->toPlainText();
+}
+
+void Note::changedTitle()
+{
+    mTitle = titleLabel->text();
 }
 
 void Note::set_vision(bool ok)

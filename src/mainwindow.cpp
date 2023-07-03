@@ -15,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     import_DB_notes();
-    place_logo();
 
     list_buttons.append(ui->pushButton_add);
     list_buttons.append(ui->pushButton_delete);
@@ -24,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     transformMainW();
-
 
     //list_buttons = this->findChildren<QPushButton*>();
     connect(ui->pushButton_notions, SIGNAL(clicked()), this, SLOT(openNotions()));
@@ -37,6 +35,21 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+
+    QList<Note*> t = this->findChildren<Note*>();
+    for(Note *i : t)
+    {
+        qDebug() << i->mTitle << " - " << i->mContent;
+    }
+    exporter.exportNotes(t,max_db_id);
+
+    qDebug() << "export success";
+    import.closeDatabase();
+    event->accept();
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -71,6 +84,9 @@ void MainWindow::transformMainW()
 
     set_style_buttons(list_buttons);
     set_reference_properties();
+
+
+    place_logo();
 
 }
 
@@ -136,8 +152,8 @@ void MainWindow::import_DB_notes()
 
     max_db_id = *std::max_element(import_content.keyBegin(), import_content.keyEnd());
 
-    //qDebug() << max_db_id << " - max key/id from database";
-    import.closeDatabase();
+    qDebug() << max_db_id << " - max key/id from database";
+   // import.closeDatabase();
 }
 
 void MainWindow::place_logo()
@@ -152,7 +168,8 @@ void MainWindow::place_logo()
 void MainWindow::addNewNote()
 {
     Note *new_note = new Note("","Title",this);
-    new_note->mId = ++max_db_id;  // prisvaivaem id k novomy Note , otlichniy ot max_db id
+    int32_t newId = max_db_id;
+    new_note->mId = ++newId;  // prisvaivaem id k novomy Note , otlichniy ot max_db id
     ui->gridLayout_desk->addWidget(new_note, current_row,current_column);
     current_column++;
     if(current_column >= 3)

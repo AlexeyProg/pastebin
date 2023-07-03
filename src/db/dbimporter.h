@@ -14,8 +14,6 @@ public:
     QString connectToDatabase();
     QHash<int32_t, Note *> importNotes();
     void closeDatabase();
-
-private:
     QSqlDatabase db;
 };
 
