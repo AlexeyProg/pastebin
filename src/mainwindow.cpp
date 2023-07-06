@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+    #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPixmap>
 #include <QIcon>
@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     import_DB_notes();
 
     list_buttons.append(ui->pushButton_add);
-    list_buttons.append(ui->pushButton_delete);
     list_buttons.append(ui->pushButton_notions);
     list_buttons.append(ui->pushButton_reference);
 
@@ -39,7 +38,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-
     QList<Note*> export_list = this->findChildren<Note*>();
 //    for(Note *i : t)
 //    {
@@ -47,7 +45,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
 //    }
     exporter.exportNotes(export_list,max_db_id);
 
-    qDebug() << "export success";
     import.closeDatabase();
     event->accept();
 }
@@ -81,10 +78,8 @@ void MainWindow::transformMainW()
     ui->pushButton_eng->setIconSize(QSize(35,35));
     ui->pushButton_eng->setFlat(true);
 
-
     set_style_buttons(list_buttons);
     set_reference_properties();
-
 
     place_logo();
 
@@ -111,7 +106,6 @@ void MainWindow::changeLanguage(QString lang)
 void MainWindow::swapTopic(bool flag)
 {
     ui->pushButton_add->setVisible(flag);
-    ui->pushButton_delete->setVisible(flag);
     for(auto * item : note_list)
     {
         item->setVisible(flag);
@@ -135,7 +129,10 @@ void MainWindow::import_DB_notes()
 {
     QHash<int32_t, Note*> import_content = import.importNotes();
     if(import_content.isEmpty())
+    {
         qDebug() << "List is empty";
+        return;
+    }
 
     foreach (int32_t key, import_content.keys())
     {
@@ -152,7 +149,7 @@ void MainWindow::import_DB_notes()
 
     max_db_id = *std::max_element(import_content.keyBegin(), import_content.keyEnd());
 
-    qDebug() << max_db_id << " - max key/id from database";
+    //qDebug() << max_db_id << " - max key/id from database";
    // import.closeDatabase();
 }
 
@@ -200,12 +197,4 @@ void MainWindow::openNotions()
     swapTopic(true);
 }
 
-
-void MainWindow::on_pushButton_delete_clicked()
-{
-    for(Note *x : note_list)
-    {
-        x->set_vision(true);
-    }
-}
 

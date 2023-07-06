@@ -2,6 +2,9 @@
 #include <QLabel>
 #include <QLineEdit>
 
+#include <QSqlError>
+#include <QSqlQuery>
+
 
 Note::Note(QString mText, QString title, QWidget *parent) : QWidget(parent), mTitle(title), mContent(mText)
 {
@@ -26,7 +29,6 @@ Note::Note(QString mText, QString title, QWidget *parent) : QWidget(parent), mTi
     connect(titleLabel, &QLineEdit::textChanged, this, &Note::changedTitle);
 
 
-    // test
     connect(check_cross, SIGNAL(clicked()), this, SLOT(deleteNote()));
 }
 
@@ -36,9 +38,6 @@ void Note::generate_buttons()
     check_cross = new QPushButton(this);
     check_cross->setGeometry(170,2,25,25);
     check_cross->setText("X");
-    check_cross->setVisible(false);       //нужно юзать setvisible
-
-    // step1 : delete note from database -> step2 : thiswidget->close();
 }
 
 void Note::changedContent()
@@ -53,18 +52,15 @@ void Note::changedTitle()
 
 void Note::deleteNote()
 {
-    this->close();
-}
 
-void Note::set_vision(bool ok)
-{
-    if(ok)
+    QString str = QString("DELETE FROM Notes WHERE note_id = %1").arg(this->mId);
+    QSqlQuery q(str);
+    bool res = q.exec();
+    if(res)
     {
-        check_cross->setVisible(true);
+        qDebug() << "not deleted from db";
+        qDebug() << q.lastError();
     }
-    else
-    {
-        check_cross->setVisible(false);
-    }
-}
 
+    deleteLater();
+}

@@ -58,15 +58,14 @@
     <layout class="QHBoxLayout" name="horizontalLayout_operations">
      <item>
       <widget class="QPushButton" name="pushButton_add">
+       <property name="maximumSize">
+        <size>
+         <width>180</width>
+         <height>30</height>
+        </size>
+       </property>
        <property name="text">
         <string>Add</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_delete">
-       <property name="text">
-        <string>Delete</string>
        </property>
       </widget>
      </item>

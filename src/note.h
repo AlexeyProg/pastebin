@@ -16,7 +16,6 @@ public:
     QString mTitle;
     QString mContent;
     int mId;
-    void set_vision(bool ok);
 private:
     QTextEdit *text_edit;
     QLineEdit *titleLabel;
@@ -30,7 +29,7 @@ public slots:
 
 
 signals:
-
+    void deleteNoteSignal();
 };
 
 #endif // NOTE_H

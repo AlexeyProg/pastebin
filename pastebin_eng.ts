@@ -24,11 +24,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="src/mainwindow.ui" line="63"/>
-        <source>delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="src/mainwindow.ui" line="119"/>
         <source>File</source>
         <translation type="unfinished"></translation>

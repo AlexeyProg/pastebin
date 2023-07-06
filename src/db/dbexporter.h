@@ -14,6 +14,7 @@ public:
     bool exportNotes(QList<Note*> &list, int32_t id);
 private:
     QSqlDatabase db;
+
 };
 
 #endif // DBEXPORTER_H

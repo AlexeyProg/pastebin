@@ -59,7 +59,6 @@ private:
 
     void place_logo();  //logotype placement
 
-
 public slots:
     void addNewNote();
     void switchToEng();
@@ -67,7 +66,5 @@ public slots:
     void openReference();
     void openNotions();
 
-private slots:
-    void on_pushButton_delete_clicked();
 };
 #endif // MAINWINDOW_H

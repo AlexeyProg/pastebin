@@ -24,11 +24,6 @@
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="src/mainwindow.ui" line="63"/>
-        <source>Delete</source>
-        <translation>Удалить</translation>
-    </message>
-    <message>
         <location filename="src/mainwindow.ui" line="119"/>
         <source>File</source>
         <translation type="unfinished"></translation>
